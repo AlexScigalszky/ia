@@ -17,6 +17,6 @@ export default async (request, context) => {
         return Response.json({ data });
     } catch (error) {
         console.log(error);
-        return Response.json({ error: 'Failed fetching data' }, { status: 500 });
+        return Response.json({ error: error + '' + process.env.OPENIA_API_KEY }, { status: 500 });
     }
 };
