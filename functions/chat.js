@@ -2,8 +2,8 @@ import OpenAI from "openai";
 
 export default async (request, context) => {
     try {
-        const openai = new OpenAI();
-        
+        const openai = new OpenAI(process.env.OPENIA_API_KEY);
+
         const completion = await openai.chat.completions.create({
             messages: [{ "role": "system", "content": "You are a helpful assistant." },
             { "role": "user", "content": "Who won the world series in 2020?" },
