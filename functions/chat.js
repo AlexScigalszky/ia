@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 export default async (request, context) => {
     try {
-        const openai = new OpenAI(process.env.OPENIA_API_KEY);
+        const openai = new OpenAI({ apiKey: process.env.OPENIA_API_KEY });
 
         const completion = await openai.chat.completions.create({
             messages: [{ "role": "system", "content": "You are a helpful assistant." },
@@ -17,6 +17,6 @@ export default async (request, context) => {
         return Response.json({ data });
     } catch (error) {
         console.log(error);
-        return Response.json({ error: error + '' + process.env.OPENIA_API_KEY }, { status: 500 });
+        return Response.json({ error: error }, { status: 500 });
     }
 };
